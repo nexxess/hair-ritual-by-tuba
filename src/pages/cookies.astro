@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import salon from "../data/salon.json";
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title={`Cookies & Speicherung – ${salon.vollname}`} description="Informationen zu Cookies und lokaler Speicherung auf der Website von Hair Ritual by Tuba.">
+
+  <PageHeader label="Rechtliches" description="Informationen zu Cookies und lokaler Datenspeicherung auf dieser Website.">
+    Cookies &<br />
+    <span class="italic">Speicherung</span>
+  </PageHeader>
+
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8 space-y-12">
+
+      <!-- Keine eigenen Cookies -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-text-primary mb-4">Keine eigenen Cookies</h2>
+        <p class="text-text-secondary leading-relaxed">
+          Diese Website setzt <strong>keine eigenen Cookies</strong> und verwendet <strong>kein Tracking</strong>. Wir analysieren weder Ihr Surfverhalten noch setzen wir Marketing- oder Analyse-Tools ein.
+        </p>
+      </div>
+
+      <!-- localStorage -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-text-primary mb-4">Lokale Speicherung (localStorage)</h2>
+        <p class="text-text-secondary leading-relaxed mb-6">
+          Zur Speicherung Ihrer Einstellungen verwenden wir den localStorage Ihres Browsers. Dieser speichert Daten ausschließlich lokal auf Ihrem Gerät – es werden keine Daten an uns oder Dritte übermittelt.
+        </p>
+
+        <!-- Tabelle -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead>
+              <tr class="border-b border-beige-dark">
+                <th class="py-3 pr-4 font-medium text-text-primary">Eintrag</th>
+                <th class="py-3 pr-4 font-medium text-text-primary">Zweck</th>
+                <th class="py-3 pr-4 font-medium text-text-primary">Wert</th>
+                <th class="py-3 font-medium text-text-primary">Dauer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-beige">
+                <td class="py-3 pr-4 text-text-secondary"><code class="bg-cream px-1.5 py-0.5">maps-consent</code></td>
+                <td class="py-3 pr-4 text-text-secondary">Speichert Ihre Einwilligung zur Anzeige von Google Maps</td>
+                <td class="py-3 pr-4 text-text-secondary"><code class="bg-cream px-1.5 py-0.5">"true"</code></td>
+                <td class="py-3 text-text-secondary">Bis zur manuellen Löschung</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Google Maps Drittanbieter-Cookies -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-text-primary mb-4">Drittanbieter-Cookies durch Google Maps</h2>
+        <p class="text-text-secondary leading-relaxed">
+          Wenn Sie auf unserer <a href={`${base}/kontakt`} class="text-gold hover:underline">Kontaktseite</a> der Anzeige von Google Maps zustimmen, wird eine Verbindung zu Google-Servern hergestellt. Google kann dabei eigene Cookies setzen und Daten erheben. Auf diese Cookies haben wir keinen Einfluss.
+        </p>
+        <p class="mt-4 text-text-secondary leading-relaxed">
+          Ohne Ihre Einwilligung wird <strong>keine</strong> Verbindung zu Google hergestellt und es werden keine Drittanbieter-Cookies gesetzt.
+        </p>
+      </div>
+
+      <!-- Einwilligung verwalten -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-text-primary mb-4">Einwilligung verwalten</h2>
+        <p class="text-text-secondary leading-relaxed">
+          Sie können Ihre Google-Maps-Einwilligung jederzeit auf unserer <a href={`${base}/datenschutz`} class="text-gold hover:underline">Datenschutzseite</a> widerrufen. Alternativ können Sie den localStorage-Eintrag über die Entwicklerwerkzeuge Ihres Browsers löschen.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

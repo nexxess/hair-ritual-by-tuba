@@ -71,11 +71,6 @@ const beliebteLeistungen = ["coloration", "pflege"];
               </div>
             )}
             <div class="p-8 lg:p-10">
-              <div class="w-12 h-12 flex items-center justify-center border border-gold/30 text-gold mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[l.icon]} />
-                </svg>
-              </div>
               <h2 class="font-serif text-xl font-semibold text-text-primary mb-3">{l.titel}</h2>
               <p class="text-text-secondary text-sm leading-relaxed">{l.beschreibung}</p>
               {l.preise.length > 0 && (

@@ -12,12 +12,14 @@ import '@fontsource/playfair-display/500-italic.css'
 import '@fontsource/playfair-display/600.css'
 import '@fontsource/playfair-display/700.css'
 
+import salon from '../data/salon.json'
+
 interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = 'Hair Ritual by Tuba – Ihr Friseursalon für moderne Schnitttechniken und hochwertige Pflegeprodukte.' } = Astro.props;
+const { title, description = `${salon.vollname} - ${salon.beschreibung}` } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
@@ -47,8 +49,8 @@ const navLinks = [
 				<div class="flex items-center justify-between h-20">
 					<!-- Logo -->
 					<a href={`${base}/`} class="flex flex-col leading-tight">
-						<span class="font-serif text-xl font-semibold tracking-wide text-text-primary">Hair Ritual</span>
-						<span class="text-[0.65rem] font-sans font-medium tracking-[0.25em] uppercase text-gold">by Tuba</span>
+						<span class="font-serif text-xl font-semibold tracking-wide text-text-primary">{salon.name}</span>
+						<span class="text-[0.65rem] font-sans font-medium tracking-[0.25em] uppercase text-gold">by {salon.inhaber}</span>
 					</a>
 
 					<!-- Desktop Navigation -->
@@ -109,11 +111,11 @@ const navLinks = [
 					<!-- Spalte 1: Marke -->
 					<div>
 						<a href={`${base}/`} class="inline-block mb-6">
-							<span class="font-serif text-2xl font-semibold text-white">Hair Ritual</span>
-							<span class="block text-[0.65rem] font-medium tracking-[0.25em] uppercase text-gold-light mt-0.5">by Tuba</span>
+							<span class="font-serif text-2xl font-semibold text-white">{salon.name}</span>
+							<span class="block text-[0.65rem] font-medium tracking-[0.25em] uppercase text-gold-light mt-0.5">by {salon.inhaber}</span>
 						</a>
 						<p class="text-sand text-sm leading-relaxed max-w-xs">
-							Moderne Schnitttechniken und hochwertige Pflegeprodukte für Ihr individuelles Haarstyling.
+							{salon.beschreibung}
 						</p>
 					</div>
 
@@ -121,18 +123,12 @@ const navLinks = [
 					<div>
 						<h3 class="text-white text-sm font-sans font-medium tracking-[0.15em] uppercase mb-6">Öffnungszeiten</h3>
 						<div class="space-y-2 text-sm text-sand">
-							<div class="flex justify-between">
-								<span>Montag</span>
-								<span>Geschlossen</span>
-							</div>
-							<div class="flex justify-between">
-								<span>Dienstag – Freitag</span>
-								<span>09:00 – 18:00</span>
-							</div>
-							<div class="flex justify-between">
-								<span>Samstag</span>
-								<span>09:00 – 15:00</span>
-							</div>
+							{salon.oeffnungszeiten.filter(o => o.tag !== 'Sonntag').map((o) => (
+								<div class="flex justify-between">
+									<span>{o.tag}</span>
+									<span class={!o.zeit ? 'text-sand-dark' : ''}>{o.zeit ?? 'Geschlossen'}</span>
+								</div>
+							))}
 						</div>
 					</div>
 
@@ -140,12 +136,15 @@ const navLinks = [
 					<div>
 						<h3 class="text-white text-sm font-sans font-medium tracking-[0.15em] uppercase mb-6">Kontakt</h3>
 						<div class="space-y-3 text-sm text-sand">
-							<p>Musterstraße 12<br />12345 Musterstadt</p>
+							<p>{salon.adresse.strasse}<br />{salon.adresse.plz} {salon.adresse.ort}</p>
 							<p>
-								<a href="tel:+4912345678" class="hover:text-gold-light transition-colors">+49 123 456 78</a>
+								<a href={salon.kontakt.telefonLink} class="hover:text-gold-light transition-colors">{salon.kontakt.telefon}</a>
 							</p>
 							<p>
-								<a href="mailto:info@hair-ritual.de" class="hover:text-gold-light transition-colors">info@hair-ritual.de</a>
+								<a href={salon.kontakt.whatsappLink} target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">WhatsApp</a>
+							</p>
+							<p>
+								<a href={salon.kontakt.instagramLink} target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">@{salon.kontakt.instagram}</a>
 							</p>
 						</div>
 					</div>
@@ -154,7 +153,7 @@ const navLinks = [
 				<!-- Copyright -->
 				<div class="mt-16 pt-8 border-t border-white/10 text-center">
 					<p class="text-xs text-sand-dark tracking-wide">
-						&copy; {new Date().getFullYear()} Hair Ritual by Tuba. Alle Rechte vorbehalten.
+						&copy; {new Date().getFullYear()} {salon.vollname}. Alle Rechte vorbehalten.
 					</p>
 				</div>
 			</div>

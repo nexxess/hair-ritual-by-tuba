@@ -1,0 +1,189 @@
+{
+  "name": "Hair Ritual",
+  "inhaber": "Tuğba Dereli",
+  "vollname": "Hair Ritual by Tuba",
+  "beschreibung": "Moderne Schnitttechniken und hochwertige Pflegeprodukte für Ihr individuelles Haarstyling.",
+  "adresse": {
+    "strasse": "Ortsmitte 5",
+    "plz": "33189",
+    "ort": "Schlangen"
+  },
+  "kontakt": {
+    "telefon": "05252 838 31 25",
+    "telefonLink": "tel:+4952528383125",
+    "whatsapp": "+49 163 2394564",
+    "whatsappLink": "https://wa.me/491632394564",
+    "instagram": "hairritualbytuba",
+    "instagramLink": "https://www.instagram.com/hairritualbytuba"
+  },
+  "oeffnungszeiten": [
+    {
+      "tag": "Montag",
+      "zeit": null
+    },
+    {
+      "tag": "Dienstag - Freitag",
+      "zeit": "09:00 - 18:00"
+    },
+    {
+      "tag": "Samstag",
+      "zeit": "08:00 - 14:00"
+    },
+    {
+      "tag": "Sonntag",
+      "zeit": null
+    }
+  ],
+  "leistungen": [
+    {
+      "id": "schnitt",
+      "titel": "Schnitt & Styling",
+      "beschreibung": "Präzise Schnitte mit modernen Techniken – vom klassischen Look bis zum trendigen Statement. Individuell auf Ihre Haarstruktur und Ihren Typ abgestimmt.",
+      "icon": "scissors",
+      "preise": [
+        {
+          "name": "Damen Schnitt & Föhnen",
+          "preis": "ab 45 €"
+        },
+        {
+          "name": "Herren Schnitt",
+          "preis": "ab 25 €"
+        },
+        {
+          "name": "Kinder Schnitt (bis 12 J.)",
+          "preis": "ab 18 €"
+        },
+        {
+          "name": "Pony nachschneiden",
+          "preis": "10 €"
+        }
+      ]
+    },
+    {
+      "id": "coloration",
+      "titel": "Coloration & Balayage",
+      "beschreibung": "Natürliche Farbverläufe und leuchtende Farbergebnisse mit schonenden Premium-Produkten. Balayage, Highlights und kreative Farbtechniken.",
+      "icon": "palette",
+      "preise": [
+        {
+          "name": "Ansatzfarbe",
+          "preis": "ab 40 €"
+        },
+        {
+          "name": "Komplettfärbung",
+          "preis": "ab 55 €"
+        },
+        {
+          "name": "Balayage / Ombré",
+          "preis": "ab 80 €"
+        },
+        {
+          "name": "Strähnchen / Folien",
+          "preis": "ab 60 €"
+        }
+      ]
+    },
+    {
+      "id": "pflege",
+      "titel": "Pflege & Treatments",
+      "beschreibung": "Intensive Haarpflege mit hochwertigen Produkten. Keratin-Behandlungen, Repair-Kuren und individuelle Pflegeprogramme für gesundes, glänzendes Haar.",
+      "icon": "sparkle",
+      "preise": [
+        {
+          "name": "Intensiv-Kur",
+          "preis": "ab 20 €"
+        },
+        {
+          "name": "Keratin-Behandlung",
+          "preis": "ab 90 €"
+        },
+        {
+          "name": "Olaplex-Treatment",
+          "preis": "ab 30 €"
+        },
+        {
+          "name": "Kopfhaut-Behandlung",
+          "preis": "ab 25 €"
+        }
+      ]
+    },
+    {
+      "id": "braut",
+      "titel": "Braut & Event",
+      "beschreibung": "Perfekte Frisuren für Ihren besonderen Tag. Hochsteckfrisuren, Brautstyling und Event-Looks – mit Probetermin und persönlicher Beratung.",
+      "icon": "clock",
+      "preise": [
+        {
+          "name": "Brautstyling inkl. Probe",
+          "preis": "ab 120 €"
+        },
+        {
+          "name": "Hochsteckfrisur",
+          "preis": "ab 55 €"
+        },
+        {
+          "name": "Event-Styling",
+          "preis": "ab 45 €"
+        },
+        {
+          "name": "Probetermin",
+          "preis": "ab 35 €"
+        }
+      ]
+    },
+    {
+      "id": "herren",
+      "titel": "Herren",
+      "beschreibung": "Klassische und moderne Herrenschnitte mit Präzision. Fade-Cuts, Bartpflege und Styling – für den gepflegten Auftritt.",
+      "icon": "person",
+      "preise": [
+        {
+          "name": "Herrenschnitt klassisch",
+          "preis": "ab 25 €"
+        },
+        {
+          "name": "Fade-Cut / Skin Fade",
+          "preis": "ab 30 €"
+        },
+        {
+          "name": "Bartpflege & Trimm",
+          "preis": "ab 15 €"
+        },
+        {
+          "name": "Komplett (Schnitt + Bart)",
+          "preis": "ab 38 €"
+        }
+      ]
+    },
+    {
+      "id": "beratung",
+      "titel": "Produkte & Beratung",
+      "beschreibung": "Ausgewählte Premium-Pflegeprodukte für zu Hause. Persönliche Beratung zur optimalen Haarpflege-Routine – abgestimmt auf Ihre Bedürfnisse.",
+      "icon": "box",
+      "preise": [
+        {
+          "name": "Persönliche Pflegeberatung",
+          "preis": "kostenlos"
+        },
+        {
+          "name": "Haaranalyse",
+          "preis": "kostenlos"
+        }
+      ]
+    }
+  ],
+  "vertrauen": [
+    {
+      "wert": "10+",
+      "label": "Jahre Erfahrung"
+    },
+    {
+      "wert": "Premium",
+      "label": "Pflegeprodukte"
+    },
+    {
+      "wert": "100%",
+      "label": "Individuelle Beratung"
+    }
+  ]
+}

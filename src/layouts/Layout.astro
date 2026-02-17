@@ -25,6 +25,8 @@ const { title, description = `${salon.vollname} - ${salon.beschreibung}` } = Ast
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
+const siteUrl = Astro.site ? new URL(base, Astro.site).href : '';
+const ogImage = `${siteUrl}/og-image.jpg`;
 
 const navLinks = [
 	{ href: `${base}/`, label: 'Home' },
@@ -43,6 +45,20 @@ const navLinks = [
 		<meta name="description" content={description} />
 		<title>{title}</title>
 
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:url" content={new URL(currentPath, Astro.site).href} />
+		<meta property="og:locale" content="de_DE" />
+		<meta property="og:site_name" content={salon.vollname} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 	</head>
 	<body class="min-h-screen bg-white antialiased">
 		<!-- ========== Navigation ========== -->

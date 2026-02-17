@@ -41,3 +41,8 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## videos
+```bash
+ffmpeg -i hero.mp4 -c:v libx264 -profile:v main -level 3.1 -crf 23 -preset slow -vf "scale='min(720,iw)':-2" -c:a aac -b:a 128k -movflags +faststart -y output.mp4
+```

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
 import salon from "../data/salon.json";
 ---
 
@@ -8,21 +9,10 @@ import salon from "../data/salon.json";
   description={`Vereinbaren Sie Ihren Termin bei ${salon.vollname}. Wir freuen uns auf Ihren Besuch.`}
 >
 
-  <!-- ========== Page Header ========== -->
-  <section class="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-cream">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <span class="section-label">Kontakt</span>
-      <h1 class="mt-4 font-serif text-4xl sm:text-5xl font-semibold text-text-primary">
-        Wir freuen uns<br />
-        <span class="italic">auf Sie</span>
-      </h1>
-      <div class="divider divider-left"></div>
-      <p class="mt-4 text-text-secondary leading-relaxed max-w-lg">
-        Vereinbaren Sie Ihren persönlichen Termin oder besuchen Sie uns direkt
-        im Salon. Wir beraten Sie gerne.
-      </p>
-    </div>
-  </section>
+  <PageHeader label="Kontakt" description="Vereinbaren Sie Ihren persönlichen Termin oder besuchen Sie uns direkt im Salon. Wir beraten Sie gerne.">
+    Wir freuen uns<br />
+    <span class="italic">auf Sie</span>
+  </PageHeader>
 
   <!-- ========== Kontakt Inhalt ========== -->
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">

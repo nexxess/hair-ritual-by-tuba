@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -10,7 +11,7 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   site: isProd ? 'https://nexxess.github.io' : 'http://localhost:4321',
   base: isProd ? '/hair-ritual-by-tuba' : '/',
-  integrations: [sitemap()],
+  integrations: [sitemap(), icon()],
   vite: {
     plugins: [tailwindcss()]
   }

@@ -1,23 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import PageHeader from "../components/PageHeader.astro";
-import BeforeAfterCard from "../components/BeforeAfterCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import BeforeAfterCard from "../../components/BeforeAfterCard.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import salon from "../data/salon.json";
+import salon from "../../data/salon.json";
 
-import balayageResult from "../assets/balayage-result.svg";
-import bridalUpdo from "../assets/bridal-updo.svg";
-import mensFade from "../assets/mens-fade.svg";
-import hairTreatment from "../assets/hair-treatment.svg";
-import productsShelf from "../assets/products-shelf.svg";
-import stylistWorking from "../assets/stylist-working.svg";
-import beforeAfter1a from "../assets/before-after-1a.svg";
-import beforeAfter1b from "../assets/before-after-1b.svg";
-import beforeAfter2a from "../assets/before-after-2a.svg";
-import beforeAfter2b from "../assets/before-after-2b.svg";
-import beforeAfter3a from "../assets/before-after-3a.svg";
-import beforeAfter3b from "../assets/before-after-3b.svg";
+import balayageResult from "../../assets/balayage-result.svg";
+import bridalUpdo from "../../assets/bridal-updo.svg";
+import mensFade from "../../assets/mens-fade.svg";
+import hairTreatment from "../../assets/hair-treatment.svg";
+import productsShelf from "../../assets/products-shelf.svg";
+import stylistWorking from "../../assets/stylist-working.svg";
+import beforeAfter1a from "../../assets/before-after-1a.svg";
+import beforeAfter1b from "../../assets/before-after-1b.svg";
+import beforeAfter2a from "../../assets/before-after-2a.svg";
+import beforeAfter2b from "../../assets/before-after-2b.svg";
+import beforeAfter3a from "../../assets/before-after-3a.svg";
+import beforeAfter3b from "../../assets/before-after-3b.svg";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -55,7 +55,7 @@ const beliebteLeistungen = ["coloration", "pflege"];
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
         {salon.leistungen.map((l) => (
-          <div class="group relative bg-cream hover:bg-beige transition-colors duration-500 overflow-hidden">
+          <div id={l.id} class="group relative bg-cream hover:bg-beige transition-colors duration-500 overflow-hidden scroll-mt-24">
             {beliebteLeistungen.includes(l.id) && (
               <span class="badge-popular">Beliebt</span>
             )}
@@ -83,8 +83,8 @@ const beliebteLeistungen = ["coloration", "pflege"];
                   ))}
                 </ul>
               )}
-              <a href={`${base}/kontakt`} class="inline-block mt-6 text-sm text-gold font-medium tracking-wide uppercase hover:text-gold-dark transition-colors">
-                Termin buchen &rarr;
+              <a href={`${base}/leistungen/${l.id}`} class="inline-block mt-6 text-sm text-gold font-medium tracking-wide uppercase hover:text-gold-dark transition-colors">
+                Mehr erfahren &rarr;
               </a>
             </div>
           </div>
@@ -140,7 +140,7 @@ const beliebteLeistungen = ["coloration", "pflege"];
   </section>
 
   <!-- ========== 4. Vorher/Nachher Galerie ========== -->
-  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+  <section id="vorher-nachher" class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white scroll-mt-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="section-label">Ergebnisse, die sprechen</span>

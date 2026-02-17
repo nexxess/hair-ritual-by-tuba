@@ -56,17 +56,79 @@ const navLinks = [
 
 					<!-- Desktop Navigation -->
 					<div class="hidden md:flex items-center gap-8">
-						{navLinks.map((link) => (
+						<!-- Home -->
+						<a
+							href={`${base}/`}
+							class:list={[
+								'text-[0.8125rem] font-medium tracking-[0.08em] uppercase transition-colors duration-300 hover:text-gold',
+								currentPath === `${base}/` ? 'text-gold' : 'text-text-secondary'
+							]}
+						>
+							Home
+						</a>
+
+						<!-- Leistungen mit Dropdown -->
+						<div class="relative group">
 							<a
-								href={link.href}
+								href={`${base}/leistungen`}
 								class:list={[
-									'text-[0.8125rem] font-medium tracking-[0.08em] uppercase transition-colors duration-300 hover:text-gold',
-									currentPath === link.href ? 'text-gold' : 'text-text-secondary'
+									'text-[0.8125rem] font-medium tracking-[0.08em] uppercase transition-colors duration-300 hover:text-gold inline-flex items-center gap-1',
+									currentPath.startsWith(`${base}/leistungen`) ? 'text-gold' : 'text-text-secondary'
 								]}
 							>
-								{link.label}
+								Leistungen
+								<svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path d="M19 9l-7 7-7-7" />
+								</svg>
 							</a>
-						))}
+							<div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300">
+								<div class="bg-white rounded-lg shadow-lg border border-beige/60 py-2 min-w-[220px]">
+									<a
+										href={`${base}/leistungen`}
+										class:list={[
+											'block px-5 py-2.5 text-xs font-medium tracking-[0.06em] uppercase transition-colors duration-200 hover:bg-cream hover:text-gold',
+											currentPath === `${base}/leistungen` ? 'text-gold' : 'text-text-secondary'
+										]}
+									>
+										Alle Leistungen
+									</a>
+									<div class="mx-4 my-1 border-t border-beige/40"></div>
+									{salon.leistungen.map((l) => (
+										<a
+											href={`${base}/leistungen/${l.id}`}
+											class:list={[
+												'block px-5 py-2.5 text-xs font-medium tracking-[0.04em] transition-colors duration-200 hover:bg-cream hover:text-gold',
+												currentPath === `${base}/leistungen/${l.id}` ? 'text-gold' : 'text-text-secondary'
+											]}
+										>
+											{l.titel}
+										</a>
+									))}
+								</div>
+							</div>
+						</div>
+
+						<!-- Über uns -->
+						<a
+							href={`${base}/ueber-uns`}
+							class:list={[
+								'text-[0.8125rem] font-medium tracking-[0.08em] uppercase transition-colors duration-300 hover:text-gold',
+								currentPath === `${base}/ueber-uns` ? 'text-gold' : 'text-text-secondary'
+							]}
+						>
+							Über uns
+						</a>
+
+						<!-- Kontakt -->
+						<a
+							href={`${base}/kontakt`}
+							class:list={[
+								'text-[0.8125rem] font-medium tracking-[0.08em] uppercase transition-colors duration-300 hover:text-gold',
+								currentPath === `${base}/kontakt` ? 'text-gold' : 'text-text-secondary'
+							]}
+						>
+							Kontakt
+						</a>
 					</div>
 
 					<!-- Mobile Menu Button -->
@@ -85,17 +147,76 @@ const navLinks = [
 			<!-- Mobile Menu -->
 			<div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-md border-t border-beige">
 				<div class="px-6 py-8 flex flex-col gap-6">
-					{navLinks.map((link) => (
-						<a
-							href={link.href}
+					<!-- Home -->
+					<a
+						href={`${base}/`}
+						class:list={[
+							'text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300',
+							currentPath === `${base}/` ? 'text-gold' : 'text-text-secondary'
+						]}
+					>
+						Home
+					</a>
+
+					<!-- Leistungen mit Sub-Menü -->
+					<div>
+						<button
+							id="mobile-leistungen-btn"
 							class:list={[
-								'text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300',
-								currentPath === link.href ? 'text-gold' : 'text-text-secondary'
+								'text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300 inline-flex items-center gap-1.5 w-full',
+								currentPath.startsWith(`${base}/leistungen`) ? 'text-gold' : 'text-text-secondary'
 							]}
 						>
-							{link.label}
-						</a>
-					))}
+							Leistungen
+							<svg id="mobile-leistungen-chevron" class="w-3 h-3 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7" />
+							</svg>
+						</button>
+						<div id="mobile-leistungen-sub" class="hidden mt-3 ml-4 flex flex-col gap-3 border-l border-beige/60 pl-4">
+							<a
+								href={`${base}/leistungen`}
+								class:list={[
+									'text-xs font-medium tracking-[0.06em] uppercase transition-colors duration-200 hover:text-gold',
+									currentPath === `${base}/leistungen` ? 'text-gold' : 'text-text-secondary'
+								]}
+							>
+								Alle Leistungen
+							</a>
+							{salon.leistungen.map((l) => (
+								<a
+									href={`${base}/leistungen/${l.id}`}
+									class:list={[
+										'text-xs font-medium tracking-[0.04em] transition-colors duration-200 hover:text-gold',
+										currentPath === `${base}/leistungen/${l.id}` ? 'text-gold' : 'text-text-secondary'
+									]}
+								>
+									{l.titel}
+								</a>
+							))}
+						</div>
+					</div>
+
+					<!-- Über uns -->
+					<a
+						href={`${base}/ueber-uns`}
+						class:list={[
+							'text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300',
+							currentPath === `${base}/ueber-uns` ? 'text-gold' : 'text-text-secondary'
+						]}
+					>
+						Über uns
+					</a>
+
+					<!-- Kontakt -->
+					<a
+						href={`${base}/kontakt`}
+						class:list={[
+							'text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300',
+							currentPath === `${base}/kontakt` ? 'text-gold' : 'text-text-secondary'
+						]}
+					>
+						Kontakt
+					</a>
 				</div>
 			</div>
 		</header>
@@ -191,6 +312,22 @@ const navLinks = [
 					bar2!.style.opacity = '1';
 					bar3!.style.transform = '';
 					bar3!.style.width = '1rem';
+				}
+			});
+
+			// Mobile Leistungen Sub-Menü Toggle
+			const leistungenBtn = document.getElementById('mobile-leistungen-btn');
+			const leistungenSub = document.getElementById('mobile-leistungen-sub');
+			const leistungenChevron = document.getElementById('mobile-leistungen-chevron');
+			let isLeistungenOpen = false;
+
+			leistungenBtn?.addEventListener('click', () => {
+				isLeistungenOpen = !isLeistungenOpen;
+				leistungenSub?.classList.toggle('hidden');
+				if (isLeistungenOpen) {
+					leistungenChevron!.style.transform = 'rotate(180deg)';
+				} else {
+					leistungenChevron!.style.transform = '';
 				}
 			});
 

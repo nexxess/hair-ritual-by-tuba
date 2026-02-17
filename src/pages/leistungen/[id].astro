@@ -1,0 +1,252 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import BeforeAfterCard from "../../components/BeforeAfterCard.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import salon from "../../data/salon.json";
+
+import balayageResult from "../../assets/balayage-result.svg";
+import bridalUpdo from "../../assets/bridal-updo.svg";
+import mensFade from "../../assets/mens-fade.svg";
+import hairTreatment from "../../assets/hair-treatment.svg";
+import productsShelf from "../../assets/products-shelf.svg";
+import stylistWorking from "../../assets/stylist-working.svg";
+import beforeAfter1a from "../../assets/before-after-1a.svg";
+import beforeAfter1b from "../../assets/before-after-1b.svg";
+import beforeAfter2a from "../../assets/before-after-2a.svg";
+import beforeAfter2b from "../../assets/before-after-2b.svg";
+
+export function getStaticPaths() {
+  return salon.leistungen.map((l) => ({ params: { id: l.id } }));
+}
+
+const { id } = Astro.params;
+const leistung = salon.leistungen.find((l) => l.id === id)!;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const heroImages: Record<string, ImageMetadata> = {
+  schnitt: stylistWorking,
+  coloration: balayageResult,
+  pflege: hairTreatment,
+  braut: bridalUpdo,
+  herren: mensFade,
+  beratung: productsShelf,
+};
+
+const detailData: Record<string, { detailText: string[]; vorteile: string[] }> = {
+  schnitt: {
+    detailText: [
+      "Ein guter Schnitt ist die Basis jeder Frisur. Bei Hair Ritual nehmen wir uns Zeit, Ihre Haarstruktur, Gesichtsform und Ihren persönlichen Stil zu analysieren – bevor die Schere auch nur einmal ansetzt.",
+      "Ob klassischer Bob, moderner Shag, Curtain Bangs oder ein mutiger Pixie-Cut: Unsere Schnitttechniken sind präzise und auf Langlebigkeit ausgelegt. Das bedeutet: Ihr Schnitt sieht nicht nur am Tag des Salonbesuchs großartig aus, sondern auch Wochen danach.",
+      "Jeder Schnitt beinhaltet eine Wäsche mit hochwertigen Pflegeprodukten, eine individuelle Beratung und ein professionelles Styling zum Mitnehmen – damit Sie sich sofort wie neu fühlen.",
+    ],
+    vorteile: [
+      "Individuelle Beratung vor jedem Schnitt",
+      "Präzise Techniken für langanhaltende Form",
+      "Inklusive Waschen, Pflege und Föhnstyling",
+      "Für alle Haartypen und Haarlängen",
+    ],
+  },
+  coloration: {
+    detailText: [
+      "Farbe verleiht Ihrem Haar Tiefe, Dimension und Persönlichkeit. Bei Hair Ritual arbeiten wir ausschließlich mit Premium-Farbprodukten, die Ihr Haar schonen und gleichzeitig brillante Ergebnisse liefern.",
+      "Unsere Spezialität ist die Balayage-Technik: Durch freihandiges Auftragen entstehen natürliche, sonnenverwöhnte Farbverläufe, die perfekt zu Ihrem Hautton passen. Aber auch bei Ansatzfarbe, Komplett-Colorationen oder kreativen Strähnchen sind Sie bei uns in besten Händen.",
+      "Vor jeder Farbbehandlung führen wir eine ausführliche Beratung durch. Wir besprechen Ihre Wünsche, analysieren Ihren aktuellen Haarton und erstellen einen individuellen Farbplan – für ein Ergebnis, das Sie begeistert.",
+    ],
+    vorteile: [
+      "Schonende Premium-Farbprodukte",
+      "Balayage, Ombré und kreative Techniken",
+      "Individuelle Farbberatung inklusive",
+      "Natürliche Ergebnisse, die zu Ihrem Typ passen",
+    ],
+  },
+  pflege: {
+    detailText: [
+      "Gesundes Haar ist schönes Haar. Unsere intensiven Treatments gehen weit über eine normale Haarkur hinaus – sie reparieren die Haarstruktur von innen heraus und sorgen für langanhaltenden Glanz und Geschmeidigkeit.",
+      "Mit Produkten wie Olaplex und Kérastase bieten wir Ihnen Behandlungen auf höchstem Niveau. Ob Keratin-Glättung für seidiges Haar, Olaplex-Treatment zur Bindungsreparatur oder eine individuell abgestimmte Intensiv-Kur: Wir finden die perfekte Pflege für Ihr Haar.",
+      "Auch bei Kopfhautproblemen wie Trockenheit, Schuppen oder Empfindlichkeit bieten wir spezialisierte Behandlungen an. Unsere Kopfhaut-Analyse hilft uns, die Ursache zu erkennen und gezielt zu behandeln.",
+    ],
+    vorteile: [
+      "Premium-Produkte von Olaplex und Kérastase",
+      "Reparatur geschädigter Haarstruktur",
+      "Spezialisierte Kopfhaut-Behandlungen",
+      "Langanhaltende Ergebnisse und gesunder Glanz",
+    ],
+  },
+  braut: {
+    detailText: [
+      "Ihr Hochzeitstag ist einer der wichtigsten Tage Ihres Lebens – und Ihre Frisur soll genauso perfekt sein wie alles andere. Bei Hair Ritual gestalten wir Brautfrisuren, die den ganzen Tag und die ganze Nacht halten.",
+      "Unser Brautpaket beinhaltet immer einen ausführlichen Probetermin. Hier probieren wir verschiedene Styles aus, stimmen die Frisur auf Ihr Kleid, Ihren Schmuck und Ihr Make-up ab und finden gemeinsam den perfekten Look für Ihren großen Tag.",
+      "Neben klassischen Hochsteckfrisuren bieten wir auch romantische Wellen, Half-up-Styles und moderne Flechtfrisuren an. Auch für Abschlussball, Gala oder andere besondere Anlässe kreieren wir Ihnen einen unvergesslichen Look.",
+    ],
+    vorteile: [
+      "Probetermin zur perfekten Abstimmung",
+      "Langanhaltende Frisuren für den ganzen Tag",
+      "Abgestimmt auf Kleid, Schmuck und Make-up",
+      "Auch für Abschlussball, Gala und Events",
+    ],
+  },
+  herren: {
+    detailText: [
+      "Auch Männer verdienen einen erstklassigen Haarschnitt. Bei Hair Ritual bieten wir klassische und moderne Herrenschnitte mit höchster Präzision – vom eleganten Business-Look bis zum trendigen Fade-Cut.",
+      "Unsere Barber-Techniken umfassen Skin Fades, Taper Cuts und Scissor Cuts. Dazu bieten wir professionelle Bartpflege: Trimmen, Konturen und Pflege für einen gepflegten, maskulinen Look.",
+      "Das Komplett-Paket aus Schnitt und Bartpflege ist besonders beliebt. In entspannter Atmosphäre nehmen wir uns Zeit für Sie und sorgen dafür, dass Sie den Salon mit einem frischen, selbstbewussten Look verlassen.",
+    ],
+    vorteile: [
+      "Präzise Fade-Cuts und klassische Schnitte",
+      "Professionelle Bartpflege und Konturierung",
+      "Entspannte Atmosphäre",
+      "Kombipakete Schnitt + Bart verfügbar",
+    ],
+  },
+  beratung: {
+    detailText: [
+      "Die richtige Pflege endet nicht im Salon. Deshalb bieten wir Ihnen eine persönliche Beratung zu den Produkten, die perfekt zu Ihrem Haartyp passen – damit Ihre Frisur auch zu Hause immer gut aussieht.",
+      "Unser Sortiment umfasst ausgewählte Premium-Marken wie Olaplex, Kérastase und weitere hochwertige Pflegelinien. Ob Shampoo, Conditioner, Leave-in-Pflege oder Styling-Produkte: Wir finden die richtige Kombination für Sie.",
+      "Unsere Haaranalyse und Pflegeberatung sind komplett kostenlos. Wir analysieren Ihren Haartyp, besprechen Ihre Pflege-Routine und geben Ihnen individuelle Tipps für gesundes, schönes Haar – ganz ohne Kaufverpflichtung.",
+    ],
+    vorteile: [
+      "Kostenlose Haaranalyse und Beratung",
+      "Premium-Marken: Olaplex, Kérastase u.v.m.",
+      "Individuelle Pflege-Routine für zu Hause",
+      "Keine Kaufverpflichtung",
+    ],
+  },
+};
+
+const detail = detailData[id!];
+const heroImage = heroImages[id!];
+---
+
+<Layout title={`${leistung.titel} – ${salon.vollname}`}>
+
+  <!-- ========== 1. PageHeader ========== -->
+  <PageHeader label={leistung.titel} description={leistung.beschreibung}>
+    {leistung.titel}
+  </PageHeader>
+
+  <!-- ========== 2. Hero-Bild + Beschreibung ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="overflow-hidden">
+          <Image
+            src={heroImage}
+            alt={leistung.titel}
+            width={700}
+            height={500}
+            class="w-full h-80 lg:h-[500px] object-cover"
+          />
+        </div>
+        <div>
+          <span class="section-label">Im Detail</span>
+          <h2 class="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-text-primary">
+            {leistung.titel}
+          </h2>
+          <div class="divider divider-left"></div>
+          {detail.detailText.map((p) => (
+            <p class="mt-4 text-text-secondary leading-relaxed">{p}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. Preisliste ========== -->
+  {leistung.preise.length > 0 && (
+    <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="section-label">Unsere Preise</span>
+          <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+            {leistung.titel} – Preise
+          </h2>
+          <div class="divider"></div>
+        </div>
+        <div class="bg-white p-8 lg:p-12">
+          <ul class="space-y-4">
+            {leistung.preise.map((p) => (
+              <li class="flex justify-between items-center py-3 border-b border-beige-dark/20 last:border-0">
+                <span class="text-text-secondary">{p.name}</span>
+                <span class="text-text-primary font-serif text-lg font-semibold">{p.preis}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-6 text-sm text-text-secondary text-center">
+            Alle Preise verstehen sich als Richtpreise. Der genaue Preis wird bei Ihrer kostenlosen Beratung individuell besprochen.
+          </p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ========== 4. Vorteile / Highlights ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="section-label">Ihre Vorteile</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Das erwartet Sie
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <ul class="space-y-4">
+        {detail.vorteile.map((v) => (
+          <li class="flex items-start gap-4 bg-cream p-5">
+            <svg class="w-6 h-6 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-text-secondary leading-relaxed">{v}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== 5. Vorher/Nachher Platzhalter ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-beige">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="section-label">Ergebnisse</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Vorher & Nachher
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+        <BeforeAfterCard
+          titel={`${leistung.titel} – Ergebnis 1`}
+          beschreibung="Echte Kundenfotos folgen in Kürze."
+          vorherSrc={beforeAfter1a}
+          nachherSrc={beforeAfter1b}
+        />
+        <BeforeAfterCard
+          titel={`${leistung.titel} – Ergebnis 2`}
+          beschreibung="Echte Kundenfotos folgen in Kürze."
+          vorherSrc={beforeAfter2a}
+          nachherSrc={beforeAfter2b}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. CTA ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center">
+      <span class="section-label">Interesse geweckt?</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+        Jetzt Termin buchen
+      </h2>
+      <div class="divider"></div>
+      <p class="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
+        Vereinbaren Sie einen Termin für {leistung.titel} – wir beraten Sie gerne persönlich und finden gemeinsam das perfekte Ergebnis für Sie.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href={`${base}/kontakt`} class="btn-primary">Termin buchen</a>
+        <a href={`${base}/leistungen`} class="btn-outline">Zurück zur Übersicht</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

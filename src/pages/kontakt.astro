@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import salon from "../data/salon.json";
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -9,12 +10,39 @@ import salon from "../data/salon.json";
   description={`Vereinbaren Sie Ihren Termin bei ${salon.vollname}. Wir freuen uns auf Ihren Besuch.`}
 >
 
-  <PageHeader label="Kontakt" description="Vereinbaren Sie Ihren persönlichen Termin oder besuchen Sie uns direkt im Salon. Wir beraten Sie gerne.">
+  <!-- ========== 1. PageHeader ========== -->
+  <PageHeader label="Kontakt" description="Vereinbaren Sie Ihren persönlichen Termin oder besuchen Sie uns direkt im Salon. Wir antworten in der Regel innerhalb weniger Stunden.">
     Wir freuen uns<br />
     <span class="italic">auf Sie</span>
   </PageHeader>
 
-  <!-- ========== Kontakt Inhalt ========== -->
+  <!-- ========== 2. Quick-Action Buttons ========== -->
+  <section class="py-10 lg:py-12 bg-white border-b border-beige">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href={salon.kontakt.telefonLink} class="flex items-center justify-center gap-3 p-5 bg-cream hover:bg-beige transition-colors group">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          <div>
+            <p class="text-xs font-medium tracking-[0.1em] uppercase text-text-muted">Direkt anrufen</p>
+            <p class="text-text-primary font-medium group-hover:text-gold transition-colors">{salon.kontakt.telefon}</p>
+          </div>
+        </a>
+        <a href={salon.kontakt.whatsappLink} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 p-5 bg-cream hover:bg-beige transition-colors group">
+          <svg class="w-5 h-5 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          </svg>
+          <div>
+            <p class="text-xs font-medium tracking-[0.1em] uppercase text-text-muted">Per WhatsApp</p>
+            <p class="text-text-primary font-medium group-hover:text-gold transition-colors">Nachricht senden</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. Kontakt Inhalt ========== -->
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
@@ -127,6 +155,63 @@ import salon from "../data/salon.json";
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. Google Maps ========== -->
+  <section class="bg-beige">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="section-label">So finden Sie uns</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Unser Standort
+        </h2>
+        <div class="divider"></div>
+        <p class="mt-4 text-text-secondary leading-relaxed">
+          {salon.adresse.strasse}, {salon.adresse.plz} {salon.adresse.ort} – zentral gelegen mit guter Parkmöglichkeit.
+        </p>
+      </div>
+      <div class="w-full h-80 lg:h-96 bg-cream">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.5!2d8.841!3d51.808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba4a1f1a3b3b3b%3A0x0!2sOrtsmitte+5%2C+33189+Schlangen!5e0!3m2!1sde!2sde!4v1"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Standort Hair Ritual by Tuba"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. FAQ ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label">Häufige Fragen</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Gut zu wissen
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="space-y-6">
+        {salon.faq.map((item) => (
+          <details class="group bg-cream p-6 cursor-pointer">
+            <summary class="flex items-center justify-between font-serif text-lg font-semibold text-text-primary list-none">
+              {item.frage}
+              <svg class="w-5 h-5 text-gold shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-4 text-text-secondary leading-relaxed text-sm">
+              {item.antwort}
+            </p>
+          </details>
+        ))}
       </div>
     </div>
   </section>

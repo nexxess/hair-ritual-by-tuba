@@ -184,6 +184,89 @@
     {
       "wert": "100%",
       "label": "Individuelle Beratung"
+    },
+    {
+      "wert": "500+",
+      "label": "Zufriedene Kunden"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah M.",
+      "text": "Ich war bei so vielen Friseuren, aber Tuba ist die Erste, die wirklich zugehört hat. Mein Balayage sieht genau so aus, wie ich es mir vorgestellt habe – natürlich und wunderschön. Ich gehe nie wieder woanders hin!",
+      "leistung": "Balayage"
+    },
+    {
+      "name": "Lisa K.",
+      "text": "Nach einer misslungenen Färbung woanders hatte ich große Angst. Tuba hat meine Haare mit einer Keratin-Behandlung gerettet. Sie fühlen sich wieder gesund und glänzend an. Absolute Empfehlung!",
+      "leistung": "Keratin-Behandlung"
+    },
+    {
+      "name": "Melanie W.",
+      "text": "Die Brautfrisur für meine Hochzeit war ein Traum! Tuba hat beim Probetermin sofort verstanden, was ich wollte. Am großen Tag saß jede Strähne perfekt – den ganzen Abend lang.",
+      "leistung": "Brautstyling"
+    },
+    {
+      "name": "Claudia R.",
+      "text": "Endlich ein Friseur, der auch bei feinem Haar den perfekten Schnitt findet. Seit ich bei Hair Ritual bin, bekomme ich ständig Komplimente. Die Beratung zu den richtigen Pflegeprodukten war Gold wert.",
+      "leistung": "Schnitt & Beratung"
+    }
+  ],
+  "vorherNachher": [
+    {
+      "titel": "Natürliches Balayage",
+      "beschreibung": "Von einem eintönigen Braun zu einem lebendigen, sonnenverwöhnten Balayage – sanfte Übergänge für einen natürlichen Look.",
+      "leistung": "Balayage"
+    },
+    {
+      "titel": "Keratin-Glättung",
+      "beschreibung": "Krauses, widerspenstiges Haar verwandelt in seidiges, pflegeleichtes Haar – mit unserer schonenden Keratin-Behandlung.",
+      "leistung": "Keratin-Behandlung"
+    },
+    {
+      "titel": "Farbkorrektur",
+      "beschreibung": "Eine misslungene Heimfärbung professionell korrigiert – zurück zu einem gleichmäßigen, strahlenden Farbergebnis.",
+      "leistung": "Coloration"
+    }
+  ],
+  "usps": [
+    {
+      "icon": "consultation",
+      "titel": "Persönliche Beratung",
+      "text": "Jeder Besuch beginnt mit einem ausführlichen Gespräch. Wir nehmen uns Zeit, Ihre Wünsche zu verstehen – für ein Ergebnis, das wirklich zu Ihnen passt."
+    },
+    {
+      "icon": "products",
+      "titel": "Premium-Produkte",
+      "text": "Wir arbeiten ausschließlich mit hochwertigen Marken wie Olaplex und Kérastase. Ihr Haar verdient nur das Beste – bei uns und zu Hause."
+    },
+    {
+      "icon": "experience",
+      "titel": "10+ Jahre Erfahrung",
+      "text": "Über ein Jahrzehnt Leidenschaft für Haare. Regelmäßige Weiterbildungen und Trend-Schulungen garantieren Ihnen aktuelle Techniken auf höchstem Niveau."
+    },
+    {
+      "icon": "trends",
+      "titel": "Immer am Puls der Zeit",
+      "text": "Von Balayage bis Curtain Bangs – wir kennen die neuesten Trends und setzen sie so um, dass sie perfekt zu Ihrem Typ passen."
+    }
+  ],
+  "faq": [
+    {
+      "frage": "Brauche ich einen Termin?",
+      "antwort": "Wir empfehlen eine Terminvereinbarung, damit wir uns ausreichend Zeit für Sie nehmen können. Für kurzfristige Termine rufen Sie uns einfach an – wir versuchen immer, eine Lösung zu finden."
+    },
+    {
+      "frage": "Wie lange dauert ein Termin?",
+      "antwort": "Ein Schnitt dauert ca. 45-60 Minuten, Färbungen und Balayage 2-3 Stunden. Bei Ihrer Terminvereinbarung geben wir Ihnen eine genaue Zeitangabe."
+    },
+    {
+      "frage": "Bieten Sie eine kostenlose Beratung an?",
+      "antwort": "Ja! Wir bieten eine kostenlose Erstberatung und Haaranalyse an. So können wir gemeinsam den perfekten Look für Sie planen – ganz unverbindlich."
+    },
+    {
+      "frage": "Welche Produkte verwenden Sie?",
+      "antwort": "Wir arbeiten mit Premium-Marken wie Olaplex, Kérastase und weiteren hochwertigen Produkten. Alle Produkte können Sie auch für die Pflege zu Hause bei uns erwerben."
     }
   ]
 }

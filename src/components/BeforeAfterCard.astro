@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  titel: string;
+  beschreibung: string;
+  vorherSrc: ImageMetadata;
+  nachherSrc: ImageMetadata;
+}
+
+const { titel, beschreibung, vorherSrc, nachherSrc } = Astro.props;
+---
+
+<div class="group">
+  <div class="grid grid-cols-2 gap-2">
+    <div class="relative overflow-hidden">
+      <Image src={vorherSrc} alt={`${titel} – Vorher`} width={400} height={500} class="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700" />
+      <span class="overlay-label overlay-label-before">Vorher</span>
+    </div>
+    <div class="relative overflow-hidden">
+      <Image src={nachherSrc} alt={`${titel} – Nachher`} width={400} height={500} class="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700" />
+      <span class="overlay-label overlay-label-after">Nachher</span>
+    </div>
+  </div>
+  <div class="mt-4">
+    <h3 class="font-serif text-lg font-semibold text-text-primary">{titel}</h3>
+    <p class="text-sm text-text-secondary leading-relaxed mt-1">{beschreibung}</p>
+  </div>
+</div>

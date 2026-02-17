@@ -1,7 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+import BeforeAfterCard from "../components/BeforeAfterCard.astro";
+import { Image } from "astro:assets";
 import salon from "../data/salon.json";
+
+import balayageResult from "../assets/balayage-result.svg";
+import bridalUpdo from "../assets/bridal-updo.svg";
+import mensFade from "../assets/mens-fade.svg";
+import hairTreatment from "../assets/hair-treatment.svg";
+import productsShelf from "../assets/products-shelf.svg";
+import stylistWorking from "../assets/stylist-working.svg";
+import beforeAfter1a from "../assets/before-after-1a.svg";
+import beforeAfter1b from "../assets/before-after-1b.svg";
+import beforeAfter2a from "../assets/before-after-2a.svg";
+import beforeAfter2b from "../assets/before-after-2b.svg";
+import beforeAfter3a from "../assets/before-after-3a.svg";
+import beforeAfter3b from "../assets/before-after-3b.svg";
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const icons: Record<string, string> = {
@@ -12,58 +28,188 @@ const icons: Record<string, string> = {
   person: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
   box: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
 };
+
+const serviceImages: Record<string, ImageMetadata> = {
+  schnitt: stylistWorking,
+  coloration: balayageResult,
+  pflege: hairTreatment,
+  braut: bridalUpdo,
+  herren: mensFade,
+  beratung: productsShelf,
+};
+
+const beliebteLeistungen = ["coloration", "pflege"];
 ---
 
 <Layout title={`Leistungen & Preise – ${salon.vollname}`}>
 
-  <PageHeader label="Was wir bieten" description="Von klassischen Schnitten bis zu modernen Farbtechniken – wir bieten Ihnen ein umfassendes Angebot für Ihr individuelles Styling.">
+  <!-- ========== 1. PageHeader ========== -->
+  <PageHeader label="Was wir bieten" description="Von klassischen Schnitten bis zu modernen Farbtechniken – entdecken Sie unser umfassendes Angebot. Jede Behandlung beginnt mit einer persönlichen Beratung, damit das Ergebnis perfekt zu Ihnen passt.">
     Unsere Leistungen<br />
     <span class="italic">& Preise</span>
   </PageHeader>
 
-  <!-- ========== Leistungen Grid ========== -->
+  <!-- ========== 2. Service Grid ========== -->
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
         {salon.leistungen.map((l) => (
-          <div class="group p-8 lg:p-10 bg-cream hover:bg-beige transition-colors duration-500">
-            <div class="w-12 h-12 flex items-center justify-center border border-gold/30 text-gold mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={icons[l.icon]} />
-              </svg>
-            </div>
-            <h2 class="font-serif text-xl font-semibold text-text-primary mb-3">{l.titel}</h2>
-            <p class="text-text-secondary text-sm leading-relaxed">{l.beschreibung}</p>
-            {l.preise.length > 0 && (
-              <ul class="mt-4 pt-4 border-t border-beige-dark/30 space-y-1.5">
-                {l.preise.map((p) => (
-                  <li class="flex justify-between text-sm">
-                    <span class="text-text-secondary">{p.name}</span>
-                    <span class="text-text-primary font-medium">{p.preis}</span>
-                  </li>
-                ))}
-              </ul>
+          <div class="group relative bg-cream hover:bg-beige transition-colors duration-500 overflow-hidden">
+            {beliebteLeistungen.includes(l.id) && (
+              <span class="badge-popular">Beliebt</span>
             )}
+            {serviceImages[l.id] && (
+              <div class="overflow-hidden">
+                <Image
+                  src={serviceImages[l.id]}
+                  alt={l.titel}
+                  width={600}
+                  height={300}
+                  class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            )}
+            <div class="p-8 lg:p-10">
+              <div class="w-12 h-12 flex items-center justify-center border border-gold/30 text-gold mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[l.icon]} />
+                </svg>
+              </div>
+              <h2 class="font-serif text-xl font-semibold text-text-primary mb-3">{l.titel}</h2>
+              <p class="text-text-secondary text-sm leading-relaxed">{l.beschreibung}</p>
+              {l.preise.length > 0 && (
+                <ul class="mt-4 pt-4 border-t border-beige-dark/30 space-y-1.5">
+                  {l.preise.map((p) => (
+                    <li class="flex justify-between text-sm">
+                      <span class="text-text-secondary">{p.name}</span>
+                      <span class="text-text-primary font-medium">{p.preis}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <a href={`${base}/kontakt`} class="inline-block mt-6 text-sm text-gold font-medium tracking-wide uppercase hover:text-gold-dark transition-colors">
+                Termin buchen &rarr;
+              </a>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ========== CTA ========== -->
-  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-beige">
+  <!-- ========== 3. Unsere Empfehlung: Balayage ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="relative overflow-hidden">
+          <Image src={balayageResult} alt="Balayage Ergebnis" width={700} height={500} class="w-full h-80 lg:h-[500px] object-cover" />
+          <span class="badge-popular">Unsere Empfehlung</span>
+        </div>
+        <div>
+          <span class="section-label">Unser Highlight</span>
+          <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+            Balayage – natürliche<br />
+            <span class="italic">Farbbrillanz</span>
+          </h2>
+          <div class="divider divider-left"></div>
+          <p class="mt-4 text-text-secondary leading-relaxed">
+            Balayage ist mehr als eine Färbetechnik – es ist eine Kunst. Durch freihandiges Auftragen entstehen
+            natürliche, sonnenverwöhnte Farbverläufe, die Ihrem Haar Tiefe und Dimension verleihen.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Natürliche, nahtlose Übergänge
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Weniger Ansatz-Nachfärbungen nötig
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Individuell auf Ihren Hautton abgestimmt
+            </li>
+            <li class="flex items-start gap-3 text-text-secondary">
+              <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              Schonende Technik für gesundes Haar
+            </li>
+          </ul>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href={`${base}/kontakt`} class="btn-primary">Balayage buchen</a>
+            <span class="inline-flex items-center text-sm text-text-secondary">ab 80 €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. Vorher/Nachher Galerie ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Ergebnisse, die sprechen</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Vorher & Nachher Galerie
+        </h2>
+        <div class="divider"></div>
+        <p class="mt-4 text-text-secondary leading-relaxed">
+          Sehen Sie selbst, welche Verwandlungen bei Hair Ritual möglich sind.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+        {salon.vorherNachher.map((item, i) => {
+          const vorherImages = [beforeAfter1a, beforeAfter2a, beforeAfter3a];
+          const nachherImages = [beforeAfter1b, beforeAfter2b, beforeAfter3b];
+          return (
+            <BeforeAfterCard
+              titel={item.titel}
+              beschreibung={item.beschreibung}
+              vorherSrc={vorherImages[i]}
+              nachherSrc={nachherImages[i]}
+            />
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. Preistransparenz ========== -->
+  <section class="py-16 lg:py-20 bg-beige">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="bg-white p-8 lg:p-12 text-center">
+        <svg class="w-10 h-10 text-gold mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-text-primary">Faire & transparente Preise</h2>
+        <div class="divider"></div>
+        <p class="mt-4 text-text-secondary leading-relaxed">
+          Alle Preise verstehen sich als Richtpreise. Der genaue Preis hängt von Haarlänge, -dichte und
+          gewünschtem Ergebnis ab. Bei Ihrer <strong class="text-text-primary">kostenlosen Beratung</strong> erstellen wir Ihnen
+          ein individuelles Angebot – transparent und ohne Überraschungen.
+        </p>
+        <a href={`${base}/kontakt`} class="btn-primary mt-8 inline-block">Kostenlose Beratung anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. CTA ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
     <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center">
-      <span class="section-label">Interesse geweckt?</span>
+      <span class="section-label">Bereit für Ihren neuen Look?</span>
       <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
-        Jetzt Termin vereinbaren
+        Vereinbaren Sie noch heute<br />Ihren Termin
       </h2>
       <div class="divider"></div>
       <p class="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
-        Kontaktieren Sie uns für eine persönliche Beratung oder buchen Sie direkt Ihren Wunschtermin.
+        Unsere Terminkalender füllen sich schnell. Sichern Sie sich Ihren Wunschtermin – wir freuen uns darauf, Sie zu verwöhnen.
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
         <a href={`${base}/kontakt`} class="btn-primary">Termin buchen</a>
         <a href={salon.kontakt.telefonLink} class="btn-outline">Anrufen</a>
+        <a href={salon.kontakt.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </div>
   </section>

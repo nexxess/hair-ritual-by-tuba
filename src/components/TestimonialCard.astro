@@ -1,0 +1,18 @@
+---
+interface Props {
+  name: string;
+  text: string;
+  leistung: string;
+}
+
+const { name, text, leistung } = Astro.props;
+---
+
+<div class="bg-white p-8 lg:p-10 relative">
+  <div class="quote-mark">&ldquo;</div>
+  <p class="text-text-secondary leading-relaxed mt-2">{text}</p>
+  <div class="mt-6 pt-6 border-t border-beige-dark/30">
+    <p class="font-serif text-lg font-semibold text-text-primary">{name}</p>
+    <p class="text-sm text-gold mt-1">{leistung}</p>
+  </div>
+</div>

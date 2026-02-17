@@ -1,48 +1,18 @@
-# Astro Starter Kit: Minimal
+# Hair Ritual by Tuba
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Webseite fuer den Friseursalon "Hair Ritual by Tuba" in Schlangen.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+| Command             | Action                                       |
+| :------------------ | :------------------------------------------- |
+| `npm install`       | Installiert Abhaengigkeiten                  |
+| `npm run dev`       | Startet Dev-Server auf `localhost:4321`       |
+| `npm run build`     | Baut die Seite nach `./dist/`                |
+| `npm run preview`   | Vorschau des Production-Builds               |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Hero-Video komprimieren
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## videos
 ```bash
 ffmpeg -i hero.mp4 -c:v libx264 -profile:v main -level 3.1 -crf 23 -preset slow -vf "scale='min(720,iw)':-2" -c:a aac -b:a 128k -movflags +faststart -y output.mp4
 ```

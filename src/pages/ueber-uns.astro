@@ -1,65 +1,132 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import { Image } from "astro:assets";
 import salon from "../data/salon.json";
+
+import stylistConsultation from "../assets/stylist-consultation.svg";
+import salonInterior from "../assets/salon-interior.svg";
+import productsShelf from "../assets/products-shelf.svg";
+import hairTreatment from "../assets/hair-treatment.svg";
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title={`Über uns – ${salon.vollname}`}>
 
-  <PageHeader label="Über uns">
+  <!-- ========== 1. PageHeader ========== -->
+  <PageHeader label="Über uns" description="Lernen Sie das Herz hinter Hair Ritual kennen – eine Geschichte von Leidenschaft, Handwerk und dem Wunsch, Menschen zum Strahlen zu bringen.">
     Leidenschaft für<br />
     <span class="italic">perfektes Haar</span>
   </PageHeader>
 
-  <!-- ========== Über uns Inhalt ========== -->
+  <!-- ========== 2. Tugbas Geschichte ========== -->
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <div>
-          <p class="text-text-secondary leading-relaxed text-lg">
-            Bei {salon.vollname} verbinden wir jahrelange Erfahrung mit den
-            neuesten Trends und Techniken. Jeder Besuch beginnt mit einer
-            persönlichen Beratung, denn wir glauben: Großartiges Haar entsteht
-            durch Zuhören, Verstehen und handwerkliches Können.
+          <span class="section-label">Unsere Geschichte</span>
+          <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+            Hinter jedem großartigen Haar<br />
+            steht <span class="italic">eine Vision</span>
+          </h2>
+          <div class="divider divider-left"></div>
+          <p class="mt-6 text-text-secondary leading-relaxed text-lg">
+            Als Tuğba Dereli vor über zehn Jahren ihre Leidenschaft für Haare zum Beruf machte,
+            hatte sie eine klare Vorstellung: Einen Ort schaffen, an dem sich jeder Gast nicht nur
+            schöner, sondern auch wohler fühlt. So entstand Hair Ritual in Schlangen.
           </p>
           <p class="mt-6 text-text-secondary leading-relaxed">
-            Wir arbeiten ausschließlich mit hochwertigen Pflegeprodukten und
-            legen besonderen Wert auf schonende Behandlungen, die Ihr Haar
-            langfristig gesund und strahlend halten.
+            Was als kleiner Traum begann, ist heute ein Salon, dem über 500 Kundinnen und Kunden
+            vertrauen. Tuğbas Philosophie ist einfach: Zuhören, verstehen, beraten – und erst dann
+            die Schere ansetzen. Denn großartiges Haar entsteht nicht durch Zufall, sondern durch
+            echtes Handwerk und echte Kommunikation.
           </p>
           <p class="mt-6 text-text-secondary leading-relaxed">
-            Unser Salon in {salon.adresse.ort} ist ein Ort, an dem Sie sich
-            wohlfühlen und entspannen können. Wir nehmen uns Zeit für Sie –
-            denn Ihr Haar verdient die beste Pflege.
+            Regelmäßige Weiterbildungen, Trend-Schulungen und die Arbeit mit Premium-Produkten
+            wie Olaplex und Kérastase sind für Tuğba selbstverständlich. Stillstand gibt es bei
+            Hair Ritual nicht – nur die ständige Suche nach dem Besten für Ihr Haar.
+          </p>
+          <p class="mt-6 text-text-secondary leading-relaxed">
+            Ob Balayage, präziser Schnitt oder intensive Pflege – jeder Besuch bei Hair Ritual
+            soll ein kleines Ritual sein: Eine Auszeit vom Alltag, nach der Sie mit einem
+            Lächeln in den Spiegel schauen.
           </p>
         </div>
 
-        <!-- Platzhalter für Bild -->
         <div class="relative">
-          <div class="aspect-[4/5] bg-cream flex items-center justify-center">
-            <div class="text-center p-8">
-              <div class="w-20 h-20 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <p class="text-text-muted text-sm">Hier kommt Ihr Bild hin</p>
-            </div>
-          </div>
+          <Image
+            src={stylistConsultation}
+            alt="Tuğba bei der persönlichen Beratung"
+            width={600}
+            height={750}
+            class="w-full aspect-[4/5] object-cover"
+          />
           <div class="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 -z-10"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== Vertrauens-Elemente ========== -->
+  <!-- ========== 3. Unsere Werte ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Was uns antreibt</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Unsere Werte
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="text-center p-8 bg-white">
+          <div class="w-14 h-14 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-text-primary mb-3">Qualität</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Wir arbeiten ausschließlich mit Premium-Produkten und modernsten Techniken.
+            Kompromisse bei der Qualität gibt es bei uns nicht – denn Ihr Haar verdient das Beste.
+          </p>
+        </div>
+        <div class="text-center p-8 bg-white">
+          <div class="w-14 h-14 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-text-primary mb-3">Ehrlichkeit</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Wir beraten Sie ehrlich und transparent. Wenn etwas nicht zu Ihnen passt, sagen wir es Ihnen –
+            und finden gemeinsam die Lösung, die wirklich funktioniert.
+          </p>
+        </div>
+        <div class="text-center p-8 bg-white">
+          <div class="w-14 h-14 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-text-primary mb-3">Wohlfühl-Atmosphäre</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Unser Salon ist mehr als ein Friseurbesuch – er ist eine Auszeit vom Alltag.
+            Bei uns können Sie entspannen, abschalten und sich verwöhnen lassen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. Trust Stats ========== -->
   <section class="py-16 lg:py-20 bg-beige">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 text-center">
         {salon.vertrauen.map((v) => (
           <div>
-            <p class="font-serif text-4xl font-semibold text-gold">{v.wert}</p>
+            <p class="font-serif text-3xl sm:text-4xl font-semibold text-gold">{v.wert}</p>
             <p class="mt-2 text-sm text-text-secondary tracking-wide uppercase">{v.label}</p>
           </div>
         ))}
@@ -67,16 +134,65 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <!-- ========== CTA ========== -->
+  <!-- ========== 5. Kundenstimmen ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Kundenstimmen</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Was unsere Kunden<br />
+          <span class="italic">über uns sagen</span>
+        </h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {salon.testimonials.map((t) => (
+          <TestimonialCard name={t.name} text={t.text} leistung={t.leistung} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. Salon-Atmosphäre ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Unser Salon</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+          Ein Ort zum<br />
+          <span class="italic">Wohlfühlen</span>
+        </h2>
+        <div class="divider"></div>
+        <p class="mt-4 text-text-secondary leading-relaxed">
+          Modernes Ambiente, warme Atmosphäre und eine persönliche Note – willkommen in unserem Salon in Schlangen.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="overflow-hidden">
+          <Image src={salonInterior} alt="Salon-Innenraum" width={500} height={400} class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="overflow-hidden">
+          <Image src={productsShelf} alt="Premium-Produkte" width={500} height={400} class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="overflow-hidden">
+          <Image src={hairTreatment} alt="Behandlung im Salon" width={500} height={400} class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-700" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. CTA ========== -->
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
     <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center">
       <span class="section-label">Neugierig geworden?</span>
       <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
-        Lernen Sie uns persönlich kennen
+        Lernen Sie uns<br />
+        <span class="italic">persönlich kennen</span>
       </h2>
       <div class="divider"></div>
       <p class="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
-        Besuchen Sie uns im Salon oder vereinbaren Sie einen Termin – wir freuen uns auf Sie.
+        Besuchen Sie uns im Salon oder vereinbaren Sie einen Termin für eine kostenlose Beratung.
+        Wir nehmen uns Zeit für Sie – versprochen.
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
         <a href={`${base}/kontakt`} class="btn-primary">Kontakt aufnehmen</a>

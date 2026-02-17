@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import TestimonialCard from "../components/TestimonialCard.astro";
 import BeforeAfterCard from "../components/BeforeAfterCard.astro";
 import ServiceHighlight from "../components/ServiceHighlight.astro";
+import { Icon } from "astro-icon/components";
 import salon from "../data/salon.json";
 
 import balayageResult from "../assets/balayage-result.svg";
@@ -14,20 +15,24 @@ import beforeAfter1b from "../assets/before-after-1b.svg";
 import beforeAfter2a from "../assets/before-after-2a.svg";
 import beforeAfter2b from "../assets/before-after-2b.svg";
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const uspIcons: Record<string, string> = {
-  consultation: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
-  products: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
-  experience: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
+  consultation:
+    "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  products:
+    "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+  experience:
+    "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
   trends: "M13 10V3L4 14h7v7l9-11h-7z",
 };
 ---
 
 <Layout title={`${salon.vollname} – Ihr Friseursalon in Schlangen`}>
-
   <!-- ========== 1. Hero Section ========== -->
-  <section class="relative mt-20 min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
+  <section
+    class="relative mt-20 min-h-[calc(100vh-5rem)] flex items-center overflow-hidden"
+  >
     <video
       class="absolute inset-0 w-full h-full object-cover"
       autoplay
@@ -41,18 +46,32 @@ const uspIcons: Record<string, string> = {
     <div class="absolute inset-0 bg-black/60"></div>
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-0 w-full">
       <div class="max-w-2xl">
-        <span class="section-label !text-gold-light [text-shadow:0_1px_4px_rgba(0,0,0,0.3)] animate-fade-in-up">Willkommen bei {salon.name}</span>
-        <h1 class="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.4)] animate-fade-in-up animate-delay-1">
+        <span
+          class="section-label !text-gold-light [text-shadow:0_1px_4px_rgba(0,0,0,0.3)] animate-fade-in-up"
+          >Willkommen bei {salon.name}</span
+        >
+        <h1
+          class="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.4)] animate-fade-in-up animate-delay-1"
+        >
           Das Lächeln im Spiegel<br />
           beginnt mit <span class="italic text-gold-light">uns</span>
         </h1>
-        <p class="mt-6 text-lg text-white/95 leading-relaxed max-w-lg [text-shadow:0_1px_4px_rgba(0,0,0,0.3)] animate-fade-in-up animate-delay-2">
-          Individuelle Beratung, moderne Techniken und Premium-Produkte – für Haar,
-          das sich so gut anfühlt, wie es aussieht. Ihr Moment der Verwandlung wartet.
+        <p
+          class="mt-6 text-lg text-white/95 leading-relaxed max-w-lg [text-shadow:0_1px_4px_rgba(0,0,0,0.3)] animate-fade-in-up animate-delay-2"
+        >
+          Individuelle Beratung, moderne Techniken und Premium-Produkte – für
+          Haar, das sich so gut anfühlt, wie es aussieht. Ihr Moment der
+          Verwandlung wartet.
         </p>
-        <div class="mt-10 flex flex-wrap gap-4 animate-fade-in-up animate-delay-3">
+        <div
+          class="mt-10 flex flex-wrap gap-4 animate-fade-in-up animate-delay-3"
+        >
           <a href={`${base}/kontakt`} class="btn-primary">Termin vereinbaren</a>
-          <a href={`${base}/leistungen`} class="btn-outline !border-white/60 !text-white hover:!bg-white/10">Unsere Leistungen</a>
+          <a
+            href={`${base}/leistungen`}
+            class="btn-outline !border-white/60 !text-white hover:!bg-white/10"
+            >Unsere Leistungen</a
+          >
         </div>
       </div>
     </div>
@@ -62,12 +81,18 @@ const uspIcons: Record<string, string> = {
   <section class="py-16 lg:py-20 bg-white">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 text-center">
-        {salon.vertrauen.map((v) => (
-          <div>
-            <p class="font-serif text-3xl sm:text-4xl font-semibold text-gold">{v.wert}</p>
-            <p class="mt-2 text-sm text-text-secondary tracking-wide uppercase">{v.label}</p>
-          </div>
-        ))}
+        {
+          salon.vertrauen.map((v) => (
+            <div>
+              <p class="font-serif text-3xl sm:text-4xl font-semibold text-gold">
+                {v.wert}
+              </p>
+              <p class="mt-2 text-sm text-text-secondary tracking-wide uppercase">
+                {v.label}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -77,24 +102,45 @@ const uspIcons: Record<string, string> = {
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="section-label">Warum Hair Ritual?</span>
-        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+        <h2
+          class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary"
+        >
           Vier Gründe, die<br />
           <span class="italic">den Unterschied machen</span>
         </h2>
         <div class="divider"></div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-        {salon.usps.map((usp) => (
-          <div class="text-center p-6">
-            <div class="w-14 h-14 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={uspIcons[usp.icon]} />
-              </svg>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10"
+      >
+        {
+          salon.usps.map((usp) => (
+            <div class="text-center p-6">
+              <div class="w-14 h-14 mx-auto mb-6 border border-gold/30 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 text-gold"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d={uspIcons[usp.icon]}
+                  />
+                </svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold text-text-primary mb-3">
+                {usp.titel}
+              </h3>
+              <p class="text-sm text-text-secondary leading-relaxed">
+                {usp.text}
+              </p>
             </div>
-            <h3 class="font-serif text-lg font-semibold text-text-primary mb-3">{usp.titel}</h3>
-            <p class="text-sm text-text-secondary leading-relaxed">{usp.text}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -129,12 +175,15 @@ const uspIcons: Record<string, string> = {
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="section-label">Ergebnisse, die überzeugen</span>
-        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+        <h2
+          class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary"
+        >
           Vorher & Nachher
         </h2>
         <div class="divider"></div>
         <p class="mt-4 text-text-secondary leading-relaxed">
-          Echte Verwandlungen unserer Kundinnen. Überzeugen Sie sich selbst von der Qualität unserer Arbeit.
+          Echte Verwandlungen unserer Kundinnen. Überzeugen Sie sich selbst von
+          der Qualität unserer Arbeit.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
@@ -152,7 +201,9 @@ const uspIcons: Record<string, string> = {
         />
       </div>
       <div class="text-center mt-12">
-        <a href={`${base}/leistungen`} class="btn-outline">Alle Ergebnisse ansehen</a>
+        <a href={`${base}/leistungen`} class="btn-outline"
+          >Alle Ergebnisse ansehen</a
+        >
       </div>
     </div>
   </section>
@@ -162,15 +213,25 @@ const uspIcons: Record<string, string> = {
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="section-label">Das sagen unsere Kunden</span>
-        <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+        <h2
+          class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary"
+        >
           Kundenstimmen
         </h2>
         <div class="divider"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {salon.testimonials.slice(0, 2).map((t) => (
-          <TestimonialCard name={t.name} text={t.text} leistung={t.leistung} />
-        ))}
+        {
+          salon.testimonials
+            .slice(0, 2)
+            .map((t) => (
+              <TestimonialCard
+                name={t.name}
+                text={t.text}
+                leistung={t.leistung}
+              />
+            ))
+        }
       </div>
     </div>
   </section>
@@ -179,14 +240,22 @@ const uspIcons: Record<string, string> = {
   <section class="py-16 lg:py-20 bg-white">
     <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center">
       <span class="section-label">Folgen Sie uns</span>
-      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+      <h2
+        class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary"
+      >
         @{salon.kontakt.instagram}
       </h2>
       <div class="divider"></div>
       <p class="mt-4 text-text-secondary leading-relaxed max-w-lg mx-auto">
-        Entdecken Sie unsere neuesten Looks, Vorher/Nachher-Transformationen und einen Blick hinter die Kulissen auf Instagram.
+        Entdecken Sie unsere neuesten Looks, Vorher/Nachher-Transformationen und
+        einen Blick hinter die Kulissen auf Instagram.
       </p>
-      <a href={salon.kontakt.instagramLink} target="_blank" rel="noopener noreferrer" class="btn-outline mt-8 inline-block">
+      <a
+        href={salon.kontakt.instagramLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline mt-8 inline-block"
+      >
         Auf Instagram folgen
       </a>
     </div>
@@ -196,24 +265,30 @@ const uspIcons: Record<string, string> = {
   <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-cream">
     <div class="mx-auto max-w-3xl px-6 lg:px-8 text-center">
       <span class="section-label">Bereit für Ihre Verwandlung?</span>
-      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary">
+      <h2
+        class="mt-4 font-serif text-3xl sm:text-4xl font-semibold text-text-primary"
+      >
         Ihr neuer Lieblingslook<br />
         wartet auf Sie
       </h2>
       <div class="divider"></div>
       <p class="mt-4 text-text-secondary leading-relaxed max-w-xl mx-auto">
-        Unsere Terminkalender füllen sich schnell – sichern Sie sich noch heute Ihren Wunschtermin.
-        Wir freuen uns darauf, Sie zu begeistern.
+        Unsere Terminkalender füllen sich schnell – sichern Sie sich noch heute
+        Ihren Wunschtermin. Wir freuen uns darauf, Sie zu begeistern.
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
         <a href={`${base}/kontakt`} class="btn-primary">Jetzt Termin buchen</a>
         <a href={salon.kontakt.telefonLink} class="btn-outline">Anrufen</a>
-        <a href={salon.kontakt.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        <a
+          href={salon.kontakt.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+        >
+          <Icon name="simple-icons:whatsapp" class="w-4 h-4" />
           WhatsApp
         </a>
       </div>
     </div>
   </section>
-
 </Layout>

@@ -2,10 +2,232 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Hair Ritual by Tuba">
-	<main class="flex flex-col items-center justify-center min-h-screen px-4">
-		<h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
-			Kontakt
-		</h1>
-	</main>
+<Layout
+  title="Kontakt – Hair Ritual by Tuba"
+  description="Vereinbaren Sie Ihren Termin bei Hair Ritual by Tuba. Wir freuen uns auf Ihren Besuch."
+>
+  <!-- ========== Page Header ========== -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-cream">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <span class="section-label">Kontakt</span>
+      <h1
+        class="mt-4 font-serif text-4xl sm:text-5xl font-semibold text-text-primary"
+      >
+        Wir freuen uns<br />
+        <span class="italic">auf Sie</span>
+      </h1>
+      <div class="divider divider-left"></div>
+      <p class="mt-4 text-text-secondary leading-relaxed max-w-lg">
+        Vereinbaren Sie Ihren persönlichen Termin oder besuchen Sie uns direkt
+        im Salon. Wir beraten Sie gerne.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== Kontakt Inhalt ========== -->
+  <section class="py-(--spacing-section) lg:py-(--spacing-section-lg) bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Kontaktformular -->
+        <div>
+          <h2 class="font-serif text-2xl font-semibold text-text-primary mb-2">
+            Nachricht senden
+          </h2>
+          <p class="text-text-secondary text-sm mb-8">
+            Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei
+            Ihnen.
+          </p>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="vorname"
+                  class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                  >Vorname</label
+                >
+                <input
+                  type="text"
+                  id="vorname"
+                  name="vorname"
+                  required
+                  class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors"
+                  placeholder="Ihr Vorname"
+                />
+              </div>
+              <div>
+                <label
+                  for="nachname"
+                  class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                  >Nachname</label
+                >
+                <input
+                  type="text"
+                  id="nachname"
+                  name="nachname"
+                  required
+                  class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors"
+                  placeholder="Ihr Nachname"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                >E-Mail</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors"
+                placeholder="ihre@email.de"
+              />
+            </div>
+
+            <div>
+              <label
+                for="telefon"
+                class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                >Telefon <span
+                  class="normal-case tracking-normal text-text-muted"
+                  >(optional)</span
+                ></label
+              >
+              <input
+                type="tel"
+                id="telefon"
+                name="telefon"
+                class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors"
+                placeholder="+49 123 456 78"
+              />
+            </div>
+
+            <div>
+              <label
+                for="leistung"
+                class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                >Gewünschte Leistung</label
+              >
+              <select
+                id="leistung"
+                name="leistung"
+                class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors appearance-none"
+              >
+                <option value="">Bitte wählen</option>
+                <option value="schnitt">Schnitt & Styling</option>
+                <option value="coloration">Coloration & Balayage</option>
+                <option value="pflege">Pflege & Treatments</option>
+                <option value="braut">Braut & Event</option>
+                <option value="herren">Herrenschnitt</option>
+                <option value="beratung">Beratung</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="nachricht"
+                class="block text-xs font-medium tracking-[0.1em] uppercase text-text-secondary mb-2"
+                >Nachricht</label
+              >
+              <textarea
+                id="nachricht"
+                name="nachricht"
+                rows="5"
+                class="w-full px-4 py-3 bg-cream border border-beige-dark/50 text-text-primary text-sm focus:outline-none focus:border-gold transition-colors resize-none"
+                placeholder="Ihre Nachricht an uns..."></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="btn-primary w-full sm:w-auto text-center"
+            >
+              Nachricht senden
+            </button>
+          </form>
+        </div>
+
+        <!-- Kontaktinformationen -->
+        <div class="space-y-12">
+          <!-- Adresse -->
+          <div>
+            <h3
+              class="text-xs font-medium tracking-[0.15em] uppercase text-gold mb-4"
+            >
+              Salon
+            </h3>
+            <p class="text-text-primary leading-relaxed">
+              Hair Ritual by Tuba<br />
+              Musterstraße 12<br />
+              12345 Musterstadt
+            </p>
+          </div>
+
+          <!-- Kontaktdaten -->
+          <div>
+            <h3
+              class="text-xs font-medium tracking-[0.15em] uppercase text-gold mb-4"
+            >
+              Kontaktdaten
+            </h3>
+            <div class="space-y-2">
+              <p>
+                <a
+                  href="tel:+4912345678"
+                  class="text-text-primary hover:text-gold transition-colors"
+                  >+49 123 456 78</a
+                >
+              </p>
+              <p>
+                <a
+                  href="mailto:info@hair-ritual.de"
+                  class="text-text-primary hover:text-gold transition-colors"
+                  >info@hair-ritual.de</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Öffnungszeiten -->
+          <div>
+            <h3
+              class="text-xs font-medium tracking-[0.15em] uppercase text-gold mb-4"
+            >
+              Öffnungszeiten
+            </h3>
+            <div class="space-y-2 text-text-primary">
+              <div class="flex justify-between max-w-xs">
+                <span>Montag</span>
+                <span class="text-text-muted">Geschlossen</span>
+              </div>
+              <div class="flex justify-between max-w-xs">
+                <span>Dienstag – Freitag</span>
+                <span>09:00 – 18:00</span>
+              </div>
+              <div class="flex justify-between max-w-xs">
+                <span>Samstag</span>
+                <span>09:00 – 15:00</span>
+              </div>
+              <div class="flex justify-between max-w-xs">
+                <span>Sonntag</span>
+                <span class="text-text-muted">Geschlossen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hinweis -->
+          <div class="p-6 bg-cream border-l-2 border-gold">
+            <p class="text-sm text-text-secondary leading-relaxed">
+              <strong class="text-text-primary">Tipp:</strong> Für kurzfristige Termine
+              erreichen Sie uns am besten telefonisch. Wir bemühen uns, auch spontane
+              Wünsche möglich zu machen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

@@ -1,1 +1,151 @@
 @import "tailwindcss";
+
+/* =============================================
+   HAIR RITUAL BY TUBA – Design System
+   Farbpalette: Weiß, Beige, Creme mit Gold-Akzent
+   Typografie: Playfair Display (Serifen) + Inter (Sans)
+   ============================================= */
+
+@theme {
+  /* Primäre Farbpalette – Warm & Elegant */
+  --color-white: #FFFFFF;
+  --color-cream: #FFF8F0;
+  --color-cream-dark: #FFF1E0;
+  --color-beige: #F5EDE3;
+  --color-beige-dark: #E8DDD0;
+  --color-sand: #D4C5B5;
+  --color-sand-dark: #C4B2A0;
+
+  /* Akzentfarbe – Gedämpftes Gold */
+  --color-gold: #B8956A;
+  --color-gold-light: #D4B896;
+  --color-gold-dark: #9A7A52;
+
+  /* Textfarben – Warme Brauntöne */
+  --color-text-primary: #2C2420;
+  --color-text-secondary: #6B5E54;
+  --color-text-muted: #9B8E84;
+
+  /* Schriften */
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Inter', 'system-ui', sans-serif;
+
+  /* Abstände */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8rem;
+}
+
+/* =============================================
+   Basis-Stile
+   ============================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+}
+
+/* Überschriften mit Serifen-Schrift */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+/* =============================================
+   Eleganter Trennstrich
+   ============================================= */
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 1.5rem auto;
+}
+
+.divider-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* =============================================
+   Button-Stile
+   ============================================= */
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.875rem 2.5rem;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-dark);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.875rem 2.5rem;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* =============================================
+   Abschnitts-Stile
+   ============================================= */
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* =============================================
+   Animationen
+   ============================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
+.animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
+.animate-delay-3 { animation-delay: 0.6s; opacity: 0; }

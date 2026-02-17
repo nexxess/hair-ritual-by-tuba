@@ -10,14 +10,18 @@ const { label, description } = Astro.props;
 <section class="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-cream">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <span class="section-label">{label}</span>
-    <h1 class="mt-4 font-serif text-4xl sm:text-5xl font-semibold text-text-primary">
+    <h1
+      class="mt-4 font-serif text-4xl sm:text-5xl font-semibold text-text-primary [&_span.italic]:text-gold-light"
+    >
       <slot />
     </h1>
     <div class="divider divider-left"></div>
-    {description && (
-      <p class="mt-4 text-text-secondary leading-relaxed max-w-lg">
-        {description}
-      </p>
-    )}
+    {
+      description && (
+        <p class="mt-4 text-text-secondary leading-relaxed max-w-lg">
+          {description}
+        </p>
+      )
+    }
   </div>
 </section>
